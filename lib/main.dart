@@ -24,12 +24,12 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: const CircleAvatar(
         radius: 25,
+        backgroundColor: Color.fromARGB(255, 50, 255, 95),
         child: Icon(
           Icons.message,
           color: Colors.white,
           size: 30,
         ),
-        backgroundColor: Color.fromARGB(255, 50, 255, 95),
       ),
       backgroundColor: const Color.fromARGB(255, 32, 164, 100),
       body: SafeArea(
@@ -61,33 +61,45 @@ class HomeScreen extends StatelessWidget {
                   ]),
             ),
             Container(
-              padding: const EdgeInsets.only(top: 10, bottom: 12),
+              padding: const EdgeInsets.only(top: 5, bottom: 0),
               decoration:
                   const BoxDecoration(color: Color.fromARGB(255, 32, 164, 100)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  Text(
-                    'CHATS',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  Text(
-                    'STATUS',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  Text(
-                    'CALLS',
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500),
-                  )
+                children: [
+                  TextButton(
+                      onPressed: () {
+                        print('');
+                      },
+                      child: const Text(
+                        'CHATS',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500),
+                      )),
+                  TextButton(
+                      onPressed: () {
+                        print('');
+                      },
+                      child: const Text(
+                        'STATUS',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500),
+                      )),
+                  TextButton(
+                      onPressed: () {
+                        print('');
+                      },
+                      child: const Text(
+                        'CALLS',
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500),
+                      ))
                 ],
               ),
             ),
