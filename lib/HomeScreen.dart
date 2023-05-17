@@ -74,7 +74,11 @@ class HomeScreen extends StatelessWidget {
                                   child: Text("Settings"),
                                 ),
                                 DropdownMenuItem(
-                                    child: Text('Profile'), value: "profile")
+                                    child: Text('Profile'), value: "profile"),
+                                DropdownMenuItem(
+                                  value: "settings",
+                                  child: Text("Logout"),
+                                ),
                               ],
                               onChanged: (String? value) {
                                 return;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_ui/screens/login.dart';
+import 'package:whatsapp_ui/screens/welcome_screen.dart';
 
 class ScreenSplash extends StatefulWidget {
   const ScreenSplash({super.key});
@@ -29,6 +30,6 @@ class _ScreenSplashState extends State<ScreenSplash> {
   Future<void> goToNextPage() async {
     await Future.delayed(const Duration(seconds: 2));
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (ctx) => ScreenLogin()));
+        .push(MaterialPageRoute(builder: (ctx) => WelcomeScreen()));
   }
 }

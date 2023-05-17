@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sms/flutter_sms.dart';
 import 'package:whatsapp_ui/HomeScreen.dart';
 
 class ScreenLogin extends StatelessWidget {
@@ -6,6 +7,9 @@ class ScreenLogin extends StatelessWidget {
 
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  String message = "This is a test message!";
+  List<String> recipents = ["9400450395"];
 
   @override
   Widget build(BuildContext context) {
@@ -75,9 +79,10 @@ class ScreenLogin extends StatelessWidget {
     final username = _usernameController.text;
     final password = _passwordController.text;
     if (username == password) {
-      Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-        return const HomeScreen();
-      }));
+      _sendSMS(message, recipents);
+      // Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+      //   return const HomeScreen();
+      // }));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text('Invalid Credentials'),
@@ -85,5 +90,13 @@ class ScreenLogin extends StatelessWidget {
         margin: EdgeInsets.all(10),
       ));
     }
+  }
+
+  void _sendSMS(String message, List<String> recipents) async {
+    String result = await sendSMS(message: message, recipients: recipents)
+        .catchError((onError) {
+      print(onError);
+    });
+    print(result);
   }
 }
