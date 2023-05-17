@@ -35,29 +35,50 @@ class HomeScreen extends StatelessWidget {
                           color: Colors.white,
                           fontWeight: FontWeight.w500),
                     ),
-                    Container(
+                    SizedBox(
                       child: Row(
                         children: [
-                          IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.camera_alt,
-                                color: Colors.white,
-                              )),
-                          IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.search,
-                                color: Colors.white,
-                              )),
-                          IconButton(
-                              onPressed: () {
-                                print("Icon Pressed");
-                              },
-                              icon: const Icon(
-                                Icons.more_vert,
-                                color: Colors.white,
-                              )),
+                          Transform.translate(
+                            offset: const Offset(30.0, 0.0),
+                            child: IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.camera_alt,
+                                  color: Colors.white,
+                                )),
+                          ),
+                          Transform.translate(
+                            offset: const Offset(30.0, 0.0),
+                            child: IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.search,
+                                  color: Colors.white,
+                                )),
+                          ),
+                          DropdownButton(
+                              hint: Container(
+                                transform:
+                                    Matrix4.translationValues(30.0, 0.0, 0.0),
+                                width: 0,
+                                child: const Icon(
+                                  Icons.more_vert,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              icon: SizedBox.shrink(),
+                              underline: const SizedBox(),
+                              items: const [
+                                DropdownMenuItem(
+                                  value: "settings",
+                                  child: Text("Settings"),
+                                ),
+                                DropdownMenuItem(
+                                    child: Text('Profile'), value: "profile")
+                              ],
+                              onChanged: (String? value) {
+                                return;
+                              })
                         ],
                       ),
                     )
@@ -127,7 +148,7 @@ class HomeScreen extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                decoration: BoxDecoration(color: Colors.white),
+                decoration: const BoxDecoration(color: Colors.white),
                 child: ListView.separated(
                     itemBuilder: (context, index) {
                       return ListTile(
@@ -142,7 +163,7 @@ class HomeScreen extends StatelessWidget {
                       );
                     },
                     separatorBuilder: (context, index) {
-                      return Divider();
+                      return const Divider();
                     },
                     itemCount: 20),
               ),

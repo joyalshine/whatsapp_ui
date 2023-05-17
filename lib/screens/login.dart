@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_ui/HomeScreen.dart';
 
 class ScreenLogin extends StatelessWidget {
   ScreenLogin({super.key});
@@ -31,7 +32,10 @@ class ScreenLogin extends StatelessWidget {
                   controller: _usernameController,
                   decoration: const InputDecoration(
                       hintText: 'Username',
-                      border: OutlineInputBorder(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.green),
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.green),
                           borderRadius: BorderRadius.all(Radius.circular(10)))),
                 ),
@@ -43,7 +47,10 @@ class ScreenLogin extends StatelessWidget {
                   obscureText: true,
                   decoration: const InputDecoration(
                       hintText: 'Password',
-                      border: OutlineInputBorder(
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.green),
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.green),
                           borderRadius: BorderRadius.all(Radius.circular(10)))),
                 ),
@@ -64,5 +71,19 @@ class ScreenLogin extends StatelessWidget {
     );
   }
 
-  void handleLogin(BuildContext context) {}
+  void handleLogin(BuildContext context) {
+    final username = _usernameController.text;
+    final password = _passwordController.text;
+    if (username == password) {
+      Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+        return const HomeScreen();
+      }));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text('Invalid Credentials'),
+        behavior: SnackBarBehavior.floating,
+        margin: EdgeInsets.all(10),
+      ));
+    }
+  }
 }
